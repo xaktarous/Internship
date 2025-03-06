@@ -1,0 +1,57 @@
+
+# Ignorer les fichiers Python compilés
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Ignorer les fichiers de l'environnement virtuel
+venv/
+env/
+*.venv
+*.env
+
+# Ignorer les fichiers et dossiers liés à l'IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignorer les fichiers de logs et de débogage
+*.log
+logs/
+debug.log
+
+# Ignorer les bases de données locales
+db.sqlite3
+*.sqlite3
+
+# Ignorer les fichiers de migration temporaires
+**/migrations/*.pyc
+**/migrations/__pycache__/
+
+# Ignorer les fichiers sensibles
+.env
+*.secret
+config/settings/local.py  # Si tu utilises des fichiers de configuration locaux
+
+# Ignorer les fichiers générés par Docker
+docker-compose.override.yml
+*.pid
+
+# Ignorer les fichiers de dépendances
+node_modules/
+package-lock.json
+yarn.lock
+
+# Ignorer les fichiers statiques et médias générés
+/static/
+media/
+staticfiles/
+
+# Ignorer les fichiers de cache et temporaires
+*.swp
+*.swo
+*.bak
+.DS_Store
+Thumbs.db

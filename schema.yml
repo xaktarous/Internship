@@ -1,0 +1,478 @@
+openapi: 3.0.3
+info:
+  title: Your Project API
+  version: 1.0.0
+  description: Your project description
+paths:
+  /products/:
+    get:
+      operationId: products_retrieve
+      tags:
+      - products
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+    post:
+      operationId: products_create
+      tags:
+      - products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Product'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+  /products/{slug}:
+    get:
+      operationId: products_retrieve_2
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - products
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+    put:
+      operationId: products_update
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Product'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: ''
+    delete:
+      operationId: products_destroy
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - products
+      responses:
+        '204':
+          description: No response body
+  /products/collection/:
+    get:
+      operationId: products_collection_retrieve
+      tags:
+      - products
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+          description: ''
+    post:
+      operationId: products_collection_create
+      tags:
+      - products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Collection'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Collection'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Collection'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+          description: ''
+  /products/collection/{slug}:
+    get:
+      operationId: products_collection_retrieve_2
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - products
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+          description: ''
+    put:
+      operationId: products_collection_update
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Collection'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Collection'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Collection'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+          description: ''
+    delete:
+      operationId: products_collection_destroy
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - products
+      responses:
+        '204':
+          description: No response body
+  /products/media/:
+    get:
+      operationId: products_media_retrieve
+      tags:
+      - products
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductMedia'
+          description: ''
+    post:
+      operationId: products_media_create
+      tags:
+      - products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductMedia'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProductMedia'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProductMedia'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductMedia'
+          description: ''
+  /products/media/{id}:
+    get:
+      operationId: products_media_retrieve_2
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - products
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductMedia'
+          description: ''
+    put:
+      operationId: products_media_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - products
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductMedia'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProductMedia'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProductMedia'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductMedia'
+          description: ''
+    delete:
+      operationId: products_media_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - products
+      responses:
+        '204':
+          description: No response body
+  /users/list/:
+    get:
+      operationId: users_list_retrieve
+      tags:
+      - users
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /users/profile/:
+    get:
+      operationId: users_profile_retrieve
+      tags:
+      - users
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: users_profile_update
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: users_profile_destroy
+      tags:
+      - users
+      responses:
+        '204':
+          description: No response body
+  /users/signup/:
+    post:
+      operationId: users_signup_create
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+components:
+  schemas:
+    Collection:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        products:
+          type: string
+          readOnly: true
+        user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+      required:
+      - description
+      - name
+      - products
+      - user
+    Product:
+      type: object
+      properties:
+        user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        stock_quantity:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        in_stock:
+          type: string
+          readOnly: true
+        media:
+          type: string
+          readOnly: true
+      required:
+      - description
+      - in_stock
+      - media
+      - name
+      - price
+      - user
+    ProductMedia:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        product:
+          type: integer
+        image:
+          type: string
+          format: uri
+      required:
+      - id
+      - image
+      - product
+    User:
+      type: object
+      properties:
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        password:
+          type: string
+          writeOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        is_staff:
+          type: boolean
+          title: Staff status
+          description: Designates whether the user can log into this admin site.
+        phone_number:
+          type: string
+          maxLength: 15
+        is_active:
+          type: boolean
+          default: true
+      required:
+      - email
+      - password
+      - phone_number
+      - username
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows: {}

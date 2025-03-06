@@ -1,0 +1,93 @@
+version: '3.11'
+
+services:
+  web:
+    build: .
+    container_name: django_web
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+      - elasticsearch
+
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6
+    container_name: redis_cache
+    ports:
+      - "6379:6379"
+
+  celery:
+    build: .
+    container_name: celery_worker
+    command: celery -A myproject worker --loglevel=info
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+      - elasticsearch
+
+  celerybeat:
+    build: .
+    container_name: celery_beat
+    command: celery -A myproject beat --loglevel=info
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+      - elasticsearch
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false  # Disable security for local development
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"  # Limit memory usage to 512MB
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+
+  websockets:
+    build: .
+    container_name: django_ws
+    command: daphne -b 0.0.0.0 -p 8001 myproject.asgi:application  # WebSockets sur un port différent
+    volumes:
+      - .:/app
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - web
+    
+
+
+volumes:
+  postgres_data:
+  elasticsearch_data:

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test WebSocket</title>
+</head>
+<body>
+    <h1>Test WebSocket Notifications</h1>
+    <button onclick="sendNotification()">Envoyer une notification</button>
+
+    <script>
+        const socket = new WebSocket("ws://127.0.0.1:8001/ws/notifications/");
+
+        socket.onopen = function() {
+            console.log("✅ WebSocket connecté !");
+        };
+
+        socket.onmessage = function(event) {
+            console.log("📩 Notification reçue :", event.data);
+            alert("Nouvelle notification : " + event.data);
+        };
+
+        function sendNotification() {
+            socket.send(JSON.stringify({ message: "Hello WebSocket depuis Django !" }));
+        }
+    </script>
+</body>
+</html>
