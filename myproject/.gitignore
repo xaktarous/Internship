@@ -9,7 +9,7 @@ __pycache__/
 venv/
 env/
 *.venv
-*.env
+.env
 
 # Ignorer les fichiers et dossiers liés à l'IDE
 .vscode/
