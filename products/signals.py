@@ -10,8 +10,5 @@ from django.core.files.storage import default_storage
 def delete_image_on_s3(sender, instance, **kwargs):
     if instance.image:
         instance.image.delete(save=False)
-    # if instance.image:
-    #     # Vérifie si le fichier existe avant de le supprimer
-    #     if default_storage.exists(instance.image.name):
-    #         default_storage.delete(instance.image.name) 
+    
 
