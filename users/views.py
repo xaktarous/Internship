@@ -5,7 +5,7 @@ from rest_framework import status
 from users.models import User
 from .serializers import UserSerializer
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
-from django.contrib.auth import get_user_model
+
 import urllib.parse
 
 
